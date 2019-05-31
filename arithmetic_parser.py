@@ -41,9 +41,6 @@ def obradi_zagrade(i):
 def obradi_pm(pribrojnici):
     #grupiranje pribrojnika
     pribrojnici_grupe = grupiraj(pribrojnici, "+", "-")
-    #DEBUG:
-    #print(pribrojnici_grupe)
-    #prolaz po grupiranim pribrojnicima
     lijevo = obradi_pp(pribrojnici_grupe[0])
     i = 1
     while i < len(pribrojnici_grupe):
@@ -63,8 +60,6 @@ def obradi_pm(pribrojnici):
 def obradi_pp(faktori):
     #grupiranje faktora
     faktori_grupe = grupiraj(faktori, "*", "/")
-    #DEBUG
-    #print(faktori_grupe)
     lijevo = obradi_pot(faktori_grupe[0])
     i = 1
     while i < len(faktori_grupe):
@@ -83,8 +78,6 @@ def obradi_pp(faktori):
     
 def obradi_pot(operandi):
     #operator potenciranja je desno asocijativan
-    #DEBUG:
-    #print(operandi)
     desno = Fraction(operandi[-1])
     i = len(operandi) - 2
     while i >= 0:
@@ -117,11 +110,7 @@ for c in ulaz:
 if broj is not None:
     tokeni.append(broj)
 
-#DEBUG:
-#print(tokeni)
 bez_zagrada, end = obradi_zagrade(0)
-#DEBUG:
-#print(bez_zagrada, end)
 sol = obradi_pm(bez_zagrada)
 
 print(sol.numerator, sol.denominator)
